@@ -48,26 +48,28 @@
       text-align: left;
     }
 
-    .simulador select {
-      width: 95%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
+.simulador select {
+  width: 95%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #c8b5e6; /* lavanda */
+  background-color: #fefbfd; /* perolado */
+  box-sizing: border-box;
+}
 
     /* Estilo específico para o campo de valor */
-    #valor {
-      width: 95%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      box-sizing: border-box;
-      text-align: left;
-    }
+  #valor {
+  width: 95%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #c8b5e6; /* lavanda */
+  background-color: #fefbfd; /* perolado */
+  font-size: 16px;
+  box-sizing: border-box;
+  text-align: left;
+}
 
     /* Remover spin buttons */
     #valor::-webkit-inner-spin-button,
@@ -87,21 +89,24 @@
       opacity: 1;
     }
 
-    .simulador button {
-      margin-top: 15px;
-      width: 100%;
-      background: #e75480;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+ .simulador button {
+  margin-top: 15px;
+  width: 100%;
+  background: linear-gradient(135deg, #f979b1, #2c529d); /* degradê rosado */
+  color: white;
+  border: 1px solid #c8b5e6; /* borda lavanda */
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(200, 181, 230, 0.3); /* sombra lavanda */
+  transition: transform 0.2s ease;
+}
 
-    .simulador button:hover {
-      background: #d43d6b;
-    }
+  .simulador button:hover {
+  background: linear-gradient(135deg, #e6a8c8, #d48bb5);
+  transform: scale(1.02);
+}
 
     #resultado {
       margin-top: 15px;
