@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador de Parcelamento</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff0f5;
+      padding: 30px;
+      text-align: center;
+    }
+    .simulador {
+      background: #ffeef6;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+    .simulador h3 { color:#2C529D; }
+    label { display:block; margin-top:10px; font-size:14px; color:#444; }
+    input, select {
+      width:95%; padding:8px; margin-top:5px; border-radius:8px; border:1px solid #ccc;
+    }
+    button {
+      margin-top:15px; width:100%; background:#e75480; color:white; border:none;
+      padding:10px; border-radius:8px; font-weight:bold; cursor:pointer;
+    }
+    button:hover { background:#d43d6b; }
+    #resultado { margin-top:15px; font-weight:bold; color:#2C529D; }
+    .voltar {
+      margin-top: 30px;
+      display: inline-block;
+      text-decoration: none;
+      background: #2C529D;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>💳 Simulador de Parcelamento</h2>
+  <p>Insira o valor da compra e escolha o número de parcelas. Enviaremos a fatura com base na simulação.</p>
+
+  <div class="simulador">
+    <h3>✨Simule sua compra parcelada✨</h3>
+    <label for="valor">💰 Valor da compra:</label>
+    <input type="number" id="valor" placeholder="Ex: 440.00">
+    <label for="parcelas">📆 Quantidade de parcelas:</label>
+    <select id="parcelas">
+      <option value="1">1x</option>
+      <option value="2">2x</option>
+      <option value="3">3x</option>
+      <option value="4">4x</option>
+      <option value="5">5x</option>
+      <option value="6">6x</option>
+      <option value="7">7x</option>
+      <option value="8">8x</option>
+      <option value="9">9x</option>
+      <option value="10">10x</option>
+      <option value="11">11x</option>
+      <option value="12">12x</option>
+    </select>
+    <button onclick="calcularParcelas()">Calcular</button>
+    <div id="resultado"></div>
+  </div>
+
+  <a href="https://seusite.ecwid.com" class="voltar">⬅️ Voltar à loja</a>
+
+  <script>
+    function calcularParcelas() {
+      let valor = parseFloat(document.getElementById("valor").value);
+      let parcelas = parseInt(document.getElementById("parcelas").value);
+      if (isNaN(valor) || parcelas <= 0) {
+        document.getElementById("resultado").innerHTML = "⚠️ Preencha os campos corretamente!";
+        return;
+      }
+
+      let taxaOperacao = 0.0479;
+      let taxaParcela = 0.0192;
+      let tarifaFixa = 0.60;
+
+      let taxaTotal = taxaOperacao + ((parcelas - 1) * taxaParcela);
+      let bruto = (valor + tarifaFixa) / (1 - taxaTotal);
+      let valorParcela = bruto / parcelas;
+
+      document.getElementById("resultado").innerHTML =
+        "💳 " + parcelas + "x de R$ " + valorParcela.toFixed(2) +
+        "<br>💰 Total: R$ " + bruto.toFixed(2);
+    }
+  </script>
+
+</body>
+</html>
