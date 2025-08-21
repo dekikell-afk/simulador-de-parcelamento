@@ -17,59 +17,123 @@
     }
 
     .logo-canto {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  max-width: 170px;
-  z-index: 10;
-}
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      max-width: 170px;
+      z-index: 10;
+    }
 
     .simulador {
-      background: #ebc1d3;
+      background: #fdcce1;
       padding: 20px;
       border-radius: 15px;
       max-width: 350px;
       margin: 20px auto;
       font-family: 'Poppins', sans-serif;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    .simulador h3 { text-align:center; color:#2C529D; }
-    .simulador label { display:block; margin-top:10px; font-size:14px; color:#444; }
-    .simulador input, .simulador select {
-      width:95%; padding:8px; margin-top:5px; border-radius:8px; border:1px solid #ccc;
+    .simulador h3 {
+      text-align: center;
+      color: #2C529D;
     }
+
+    .simulador label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #444;
+      text-align: left;
+    }
+
+    .simulador select {
+      width: 95%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    /* Estilo específico para o campo de valor */
+    #valor {
+      width: 95%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    /* Remover spin buttons */
+    #valor::-webkit-inner-spin-button,
+    #valor::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    #valor {
+      -moz-appearance: textfield;
+    }
+
+    /* Estilo do placeholder */
+    #valor::placeholder {
+      color: #b0c8f7;
+      font-style: italic;
+      opacity: 1;
+    }
+
     .simulador button {
-      margin-top:15px; width:100%; background:#e75480; color:white; border:none;
-      padding:10px; border-radius:8px; font-weight:bold; cursor:pointer;
+      margin-top: 15px;
+      width: 100%;
+      background: #e75480;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
     }
-    .simulador button:hover { background:#d43d6b; }
-    #resultado { margin-top:15px; font-weight:bold; text-align:center; color:#2C529D; }
-     .voltar {
-  margin-top: 10px;
-  display: inline-block;
-  text-decoration: none;
-  background: #a8bbe1;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 500;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-}
-    
+
+    .simulador button:hover {
+      background: #d43d6b;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+      color: #2C529D;
+    }
+
+    .voltar {
+      margin-top: 10px;
+      display: inline-block;
+      text-decoration: none;
+      background: #a8bbe1;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
 
-  <img src="https://github.com/dekikell-afk/simulador-de-parcelamento/blob/main/logo2.png?raw=true" alt="Logo Amelie" class="logo-canto" / >
+  <img src="https://github.com/dekikell-afk/simulador-de-parcelamento/blob/main/logo2.png?raw=true" alt="Logo Amelie" class="logo-canto" />
 
   <div style="text-align: center;">
-  <p style="color: #f5b7d2; font-size: 1.1rem; font-weight: 500; text-shadow: none; margin-bottom: 15px;">💳 Pagamento Parcelado:</p>
-  <p style="color: #faf8f9; font-size: 0.85rem;">
-    Escolha abaixo em quantas vezes deseja parcelar sua compra.<br>
-    Após finalizar o pedido, enviaremos a fatura com o valor correspondente.
-  </p>
-</div>
+    <p style="color: #f5b7d2; font-size: 1.1rem; font-weight: 500; text-shadow: none; margin-bottom: 15px;">💳 Pagamento Parcelado:</p>
+    <p style="color: #faf8f9; font-size: 0.85rem;">
+      Escolha abaixo em quantas vezes deseja parcelar sua compra.<br>
+      Após finalizar o pedido, enviaremos a fatura com o valor correspondente.
+    </p>
+  </div>
 
   <!-- Calculadora Parcelada -->
   <div class="simulador">
@@ -95,10 +159,10 @@
     <div id="resultado"></div>
   </div>
 
-   <div style="text-align: center;">
-  <a href="https://papiermoon.company.site/products/checkout/delivery" class="voltar">⬅️ Voltar à loja</a>
-</div>
-  
+  <div style="text-align: center;">
+    <a href="https://papiermoon.company.site/products/checkout/delivery" class="voltar">⬅️ Voltar à loja</a>
+  </div>
+
   <script>
     function calcularParcelas() {
       let valor = parseFloat(document.getElementById("valor").value);
