@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Precificação Interna</title>
+  <style>
+    body {
+      background: #f9f7f6;
+      font-family: 'Segoe UI', sans-serif;
+      color: #4b4b4b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      border: 1px solid #e0dfe3;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(180, 170, 200, 0.2);
+      padding: 32px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #7a6ea1;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #6a6a6a;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #dcd6e0;
+      border-radius: 8px;
+      background-color: #fdfdff;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: #b8aee0;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #b8aee0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #a79bd4;
+    }
+
+    #resultadoPrecificacao {
+      margin-top: 24px;
+      background-color: #f4f2f8;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #5a5570;
+    }
+
+    strong {
+      color: #7a6ea1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🌷 Precificação Interna</h2>
+    <label for="liquido">💖 Valor líquido desejado:</label>
+    <input type="number" id="liquido" placeholder="Ex: 120.00">
+
+    <label for="parcelasPrecificar">📆 Número de parcelas:</label>
+    <input type="number" id="parcelasPrecificar" placeholder="Ex: 3">
+
+    <button onclick="precificar()">✨ Calcular ✨</button>
+
+    <div id="resultadoPrecificacao"></div>
+  </div>
+
+  <script>
+    function precificar() {
+      let valorLiquido = parseFloat(document.getElementById("liquido").value);
+      let parcelas = parseInt(document.getElementById("parcelasPrecificar").value);
+
+      if (isNaN(valorLiquido) || parcelas <= 0) {
+        document.getElementById("resultadoPrecificacao").innerHTML = "⚠️ Preencha os campos corretamente!";
+        return;
+      }
+
+      let taxaOperacao = 0.0479;
+      let taxaParcela = 0.0192;
+      let tarifaFixa = 0.60;
+
+      let taxaTotal = taxaOperacao + ((parcelas - 1) * taxaParcela);
+      let bruto = (valorLiquido + tarifaFixa) / (1 - taxaTotal);
+      let valorParcela = bruto / parcelas;
+      let custoTotal = bruto - valorLiquido;
+
+      document.getElementById("resultadoPrecificacao").innerHTML =
+        `<p>🌸 Valor a cobrar: <strong>R$ ${bruto.toFixed(2)}</strong></p>
+         <p>🧁 ${parcelas}x de <strong>R$ ${valorParcela.toFixed(2)}</strong></p>
+         <p>💫 Custo total: <strong>R$ ${custoTotal.toFixed(2)}</strong></p>
+         <p>🌿 Saldo líquido: <strong>R$ ${valorLiquido.toFixed(2)}</strong></p>`;
+    }
+  </script>
+</body>
+</html>
