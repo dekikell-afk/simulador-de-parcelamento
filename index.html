@@ -1,53 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simulador de Parcelamento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
   <style>
     body {
-<img src="https://github.com/dekikell-afk/simulador-de-parcelamento/blob/main/Prancheta10.png?raw=true" 
-     alt="Logo Amelie" 
-     style="max-width:180px; width:100%; height:auto; margin-bottom:20px; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,0.1); display:block; margin-left:auto; margin-right:auto;">
+      margin: 0;
+      padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: #fff0f5;
-      padding: 30px;
-      text-align: center;
+      background-image: url('https://github.com/dekikell-afk/simulador-de-parcelamento/blob/main/fundo%20azul%20padrao.png?raw=true');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
+
+    .logo-canto {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  max-width: 170px;
+  z-index: 10;
+}
+
     .simulador {
-      background: #ffeef6;
+      background: #ebc1d3;
       padding: 20px;
       border-radius: 15px;
-      max-width: 400px;
-      margin: 0 auto;
+      max-width: 350px;
+      margin: 20px auto;
+      font-family: 'Poppins', sans-serif;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
     }
-    .simulador h3 { color:#2C529D; }
-    label { display:block; margin-top:10px; font-size:14px; color:#444; }
-    input, select {
+
+    .simulador h3 { text-align:center; color:#2C529D; }
+    .simulador label { display:block; margin-top:10px; font-size:14px; color:#444; }
+    .simulador input, .simulador select {
       width:95%; padding:8px; margin-top:5px; border-radius:8px; border:1px solid #ccc;
     }
-    button {
+    .simulador button {
       margin-top:15px; width:100%; background:#e75480; color:white; border:none;
       padding:10px; border-radius:8px; font-weight:bold; cursor:pointer;
     }
-    button:hover { background:#d43d6b; }
-    #resultado { margin-top:15px; font-weight:bold; color:#2C529D; }
-    .voltar {
-      margin-top: 30px;
-      display: inline-block;
-      text-decoration: none;
-      background: #2C529D;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-    }
+    .simulador button:hover { background:#d43d6b; }
+    #resultado { margin-top:15px; font-weight:bold; text-align:center; color:#2C529D; }
   </style>
 </head>
 <body>
 
-  <h2>💳 Simulador de Parcelamento</h2>
-  <p>Insira o valor da compra e escolha o número de parcelas. Enviaremos a fatura com base na simulação.</p>
+  <img src="https://github.com/dekikell-afk/simulador-de-parcelamento/blob/main/logo2.png?raw=true" alt="Logo Amelie" class="logo-canto" / >
 
+  <div style="text-align: center;">
+  <p style="color: #f5b7d2; font-size: 1.1rem; font-weight: 500; text-shadow: none; margin-bottom: 15px;">💳 Pagamento Parcelado:</p>
+  <p style="color: #faf8f9; font-size: 0.85rem;">
+    Escolha abaixo em quantas vezes deseja parcelar sua compra.<br>
+    Após finalizar o pedido, enviaremos a fatura com o valor correspondente.
+  </p>
+</div>
+
+  <!-- Calculadora Parcelada -->
   <div class="simulador">
     <h3>✨Simule sua compra parcelada✨</h3>
     <label for="valor">💰 Valor da compra:</label>
@@ -71,8 +83,6 @@
     <div id="resultado"></div>
   </div>
 
-  <a href="https://seusite.ecwid.com" class="voltar">⬅️ Voltar à loja</a>
-
   <script>
     function calcularParcelas() {
       let valor = parseFloat(document.getElementById("valor").value);
@@ -95,6 +105,8 @@
         "<br>💰 Total: R$ " + bruto.toFixed(2);
     }
   </script>
+</body>
+</html>
 
 </body>
 </html>
